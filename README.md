@@ -21,7 +21,7 @@ We are running the static analysis tool **PMD** on the source code. With the hel
 - **PMD Plugin**<br>
     This plugin helps us collect the PMD analysis results of the project and visualises the found warnings.
 - **Static Analysis Collector Plugin**<br>
-    This add on plugin to PMD collects the analysis results and shows them on a combined trend graph
+    This add-on plugin to PMD collects the analysis results and shows them on a combined trend graph
 - **Hudson post build Plugin**<br>
     This plugin helps us execute post-build tasks such as executing scripts once the build is done.
 
@@ -39,7 +39,7 @@ Coverage<br>
 
 ####Improving Coverage
 
-We used constraint based test generation to generate test cases which increased the test coverage significantly. The script <code>addconstraints.js</code> add the additional constraints to generate additional tests.
+We used constraint based test generation to generate test cases which increased the test coverage significantly. The script <code>addconstraints.js</code> adds the additional constraints to generate additional tests.
 The screenshot for the improved test coverage is as follows <br>
 
 Coverage after constraint based test generation<br>
@@ -66,21 +66,21 @@ This is shown below in the screencast
 
 ###Analysis section
 
-We have used the static analysis tool **PMD** to run static analysis on our code. For this analysis, we have used basic ruleset as well as defined our own custom rule <code>CheckRequireParams</code> which checks if the require function takes only one parameter.As a result of the analysis, an xml file <code>pmd.xml</code> is generated which mentions the violations in the code. The screenshot for the pmd.xml is as follows<br>
+We have used the static analysis tool **PMD** to run static analysis on our code. For this analysis, we have used basic ruleset as well as defined our own custom rule <code>CheckRequireParams</code> which checks if the require function takes only one parameter. As a result of the analysis, an xml file <code>pmd.xml</code> is generated which mentions the violations in the code. The screenshot for the pmd.xml is as follows<br>
 
 ![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/pmdxml.png)
 
 We have also ensured that if the analysis reports any violation of the custom rule in the code, then the commit is rejected.
 
-        ./check_keys.sh
+        node parser.js
         RETVAL=$?
         if [ $RETVAL -ne 0 ]
         then
             echo ""
-            echo "Private keys enclosed!"
+            echo "Coverage or custom static analysis rule failed!"
             echo "ABORTING commmit!"
         exit 1
-    fi
+        fi   fi
     
 This is shown below in the screencast<br>
 
