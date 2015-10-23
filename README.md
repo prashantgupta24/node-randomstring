@@ -66,8 +66,9 @@ This is shown below in the screencast
 
 ###Analysis section
 
-We have used the static analysis tool **PMD** to run static analysis on our code. For this analysis, we have used basic ruleset as well as defined our own custom rule <code>CheckRequireParams</code> which checks if the require function takes only one parameter.As a result of the analysis, an xml file <code>pmd.xml</code> is generated which mentions the violations in the code. The screenshot for the pmd.xml is as follows
+We have used the static analysis tool **PMD** to run static analysis on our code. For this analysis, we have used basic ruleset as well as defined our own custom rule <code>CheckRequireParams</code> which checks if the require function takes only one parameter.As a result of the analysis, an xml file <code>pmd.xml</code> is generated which mentions the violations in the code. The screenshot for the pmd.xml is as follows<br>
 
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/pmdxml.png)
 
 We have also ensured that if the analysis reports any violation of the custom rule in the code, then the commit is rejected.
 
@@ -81,9 +82,15 @@ We have also ensured that if the analysis reports any violation of the custom ru
         exit 1
     fi
     
-This is shown below in the screencast
+This is shown below in the screencast<br>
 
-We have configured Jenkin, with the plugins which displays the results of the static analysis through graphs. The screenshot of one such representation is as follows:
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/pmd1.gif)
+
+
+We have configured Jenkin, with the plugins which displays the results of the static analysis through graphs. The screenshot of one such representation is as follows:<br>
+
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/JenkinsStaticAnalysis.png)
+
 
 ###Check for security tokens or ssh keys
 Through the script <code>check_key.ssh</code> we are checking for the following conditions to assure that no security token or ssh keys are present in the files that are added to the commit. If any such key is detected, the commit is rejected<br>
@@ -97,8 +104,12 @@ Through the script <code>check_key.ssh</code> we are checking for the following 
             <code>"BEGIN RSA PRIVATE KEY"</code><br>
         Any file with config tokens<br>
             <code>"config.token"<code><br>
+<br>The screenshot showing an example of a key violation is as follows :<br>
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/KeyViolation.png)
 
 The screencast is as follows:
+
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/private%20keys%2Bpem.gif)
 
 
 
