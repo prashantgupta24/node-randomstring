@@ -84,8 +84,8 @@ Through the script <code>check_key.ssh</code> we are checking for the following 
             <code>"BEGIN RSA PRIVATE KEY"</code><br>
         Any file with config tokens<br>
             <code>"config.token"<code><br>
-        
-The screencast for the same is as follows:
+
+The screencast is as follows:
 
 
 
