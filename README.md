@@ -32,16 +32,22 @@ We used **Mocha** framework for unit testing. The screenshot for the unit test r
 ![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/NpmTestScreenshot.png)
 
 We used **Istanbul** to measure the test coverage. The command and the screenshot is as follows <br>
-<code>node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha</code>
-Coverage before Istanbul<br>
+<code>node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha</code><br><br>
+Coverage<br>
 ![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/CoverageBefore.png)
-Coverage after Istanbul<br>
-![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/coverageafter.png)
+
 
 ####Improving Coverage
 
 We used constraint based test generation to generate test cases which increased the test coverage significantly. The script <code>addconstraints.js</code> add the additional constraints to generate additional tests.
 The screenshot for the improved test coverage is as follows <br>
+
+Coverage after constraint based test generation<br>
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/coverageafter.png)
+
+The screencast showing the above process of unit testing, test coverage and constraint based test generation is as follows:<br>
+
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/unit%20testing%20and%20constraint%20testing.gif)
 
 We have also ensured that if the statement coverage is less than 80%, then the commit is rejected.
 
@@ -55,6 +61,8 @@ We have also ensured that if the statement coverage is less than 80%, then the c
         exit 1
         fi
 This is shown below in the screencast
+
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/commit%20fail%20on%20coverage.gif)
 
 ###Analysis section
 
