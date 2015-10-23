@@ -4,15 +4,17 @@
 
      var json=JSON.parse(rawJSON);
      var coverage=true;
-     
-     for(var i=0;i<json.pmd.file.length;i++){
-     	for(var j=0;j<json.pmd.file[i].violation.length;j++){
-     		if(json.pmd.file[i].violation[j].$.rule=="CheckRequireParams")
-     		coverage=false;
-     	}
+     //console.log(json);
+     if(json.pmd.file)
+     {
+       for(var i=0;i<json.pmd.file.length;i++){
+       	for(var j=0;j<json.pmd.file[i].violation.length;j++){
+       		if(json.pmd.file[i].violation[j].$.rule=="CheckRequireParams")
+       		coverage=false;
+       	}
+       }
      }
-     
-   
+
     function loadXMLDoc(filePath) {
         var fs = require('fs');
         var xml2js = require('xml2js');
@@ -27,7 +29,7 @@
             //console.log(JSON.stringify(result));
         });
 
-        
+
         return json;
     } catch (ex) {console.log(ex)}
  }
