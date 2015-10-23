@@ -73,17 +73,17 @@ This is shown below in the screencast
 We have configured Jenkin, with the plugins which displays the results of the static analysis through graphs. The screenshot of one such representation is as follows:
 
 ###Check for security tokens or ssh keys
-Through the script <code>check_key.ssh</code> we are checking for the following conditions to assure that no security token or ssh keys are present in the files that are added to the commit. If any such key is detected, the commit is rejected
-    - Any PEM or PPK file is found
-        [ ${FILE##*.} = "pem" ] || [ ${FILE##*.} = "ppk" ]
-    - Any regular expression of characters matching the length between 20 and 40
-        '(?<![A-Z0-9])[A-Z0-9]{20,40}(?![A-Z0-9])'
-    - Any regular expression of characters matching the length between 40 and 80
-        '(?<![A-Za-z0-9+=])[A-Za-z0-9+=]{40,80}(?![A-Za-z0-9+=])'
-    - Any String containing the expression
-        "BEGIN RSA PRIVATE KEY"
-    - Any file with config tokens
-        "config.token"
+Through the script <code>check_key.ssh</code> we are checking for the following conditions to assure that no security token or ssh keys are present in the files that are added to the commit. If any such key is detected, the commit is rejected<br>
+        Any PEM or PPK file is found<br>
+            <code>[ ${FILE##*.} = "pem" ] || [ ${FILE##*.} = "ppk" ]</code><br>
+        Any regular expression of characters matching the length between 20 and 40<br>
+            <code>'(?<![A-Z0-9])[A-Z0-9]{20,40}(?![A-Z0-9])' </code><br>
+        Any regular expression of characters matching the length between 40 and 80<br>
+            <code>'(?<![A-Za-z0-9+=])[A-Za-z0-9+=]{40,80}(?![A-Za-z0-9+=])'</code><br>
+        Any String containing the expression<br>
+            <code>"BEGIN RSA PRIVATE KEY"</code><br>
+        Any file with config tokens<br>
+            <code>"config.token"<code><br>
         
 The screencast for the same is as follows:
 
