@@ -29,9 +29,14 @@ We are running the static analysis tool **PMD** on the source code. With the hel
 ####Unit Testing & Coverage
 
 We used **Mocha** framework for unit testing. The screenshot for the unit test results is attached below:
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/NpmTestScreenshot.png)
 
 We used **Istanbul** to measure the test coverage. The command and the screenshot is as follows <br>
 <code>node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha</code>
+Coverage before Istanbul<br>
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/CoverageBefore.png)
+Coverage after Istanbul<br>
+![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/coverageafter.png)
 
 ####Improving Coverage
 
