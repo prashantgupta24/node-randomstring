@@ -1,61 +1,26 @@
-# node-randomstring
+# DevOps Milestone 2 
+##Test Analysis
 
-[![Build Status](https://travis-ci.org/klughammer/node-randomstring.svg?branch=master)](https://travis-ci.org/klughammer/node-randomstring) [![Download Stats](https://img.shields.io/npm/dm/randomstring.svg)](https://github.com/klughammer/node-randomstring)
+    Divya Jain (djain2)
+    Shrenik Gala (sngala)
+    Prashant Gupta (pgupta7)
+    
+####Target Project
+We have used a simple **NodeJs** application for this stage of the project which acts as a library for creating random strings. We have configured **Jenkins** on our machine as our build server.
 
-Library to help you create random strings.
+####
+We are using **Mocha** as the testing framework and **Istanbul** to measure test coverage. We have used the technique of constraint based test generation to increase the coverage.
+We are running the static analysis tool **PMD** on the source code. With the help of the precommit hook , we have ensured that a commit gets rejected if test coverage is less than 80% or if any of the rules in PMD analysis is failed or any security token or key is detected.
 
-## Installation
+##Jenkins Configuration
 
-To install randomstring, use [npm](http://github.com/npm/npm):
+####Plugins Used
 
-```
-npm install randomstring
-```
-
-## Usage
-
-```javascript
-var randomstring = require("randomstring");
-
-randomstring.generate();
-// >> "XwPp9xazJ0ku5CZnlmgAx2Dld8SHkAeT"
-
-randomstring.generate(7);
-// >> "xqm5wXX"
-
-randomstring.generate({
-  length: 12,
-  charset: 'alphabetic'
-});
-// >> "AqoTIzKurxJi"
-
-randomstring.generate({
-  charset: 'abc'
-});
-// >> "accbaabbbbcccbccccaacacbbcbbcbbc"
-```
-
-## API
-
-`randomstring.`
-
-- `generate(options)`
-  - `length` - the length of the random string. (default: 32) [OPTIONAL]
-  - `readable` - exclude poorly readable chars: 0OIl. (default: false) [OPTIONAL]
-  - `charset` - define the character set for the string. (default: 'alphanumeric') [OPTIONAL]
-    - `alphanumeric` - [0-9 a-z A-Z]
-    - `alphabetic` - [a-z A-Z]
-    - `numeric` - [0-9]
-    - `hex` - [0-9 a-f]
-    - `custom` - any given characters
-
-## Tests
-
-```
-npm install
-npm test
-```
-
-## LICENSE
-
-node-randomstring is licensed under the MIT license.
+- **GitHub Plugin**<br>
+    This plugin enables us to use Git as the source code management tool. We have specified the path of the local Git repository in the Repository URL. 
+- **PMD Plugin**<br>
+    This plugin helps us collect the PMD analysis results of the project and visualises the found warnings.
+- **Static Analysis Collector Plugin**<br>
+    This add on plugin to PMD collects the analysis results and shows them on a combined trend graph
+- **Hudson post build Plugin**<br>
+    This plugin helps us execute post-build tasks such as executing scripts once the build is done.
