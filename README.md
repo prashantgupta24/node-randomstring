@@ -10,7 +10,7 @@ We have used a simple **NodeJs** application for this stage of the project which
 
 ####
 We are using **Mocha** as the testing framework and **Istanbul** to measure test coverage. We have used the technique of constraint based test generation to increase the coverage.
-We are running the static analysis tool **PMD** on the source code. With the help of the precommit hook , we have ensured that a commit gets rejected if test coverage is less than 80% or if any of the rules in PMD analysis is failed or any security token or key is detected.
+We are running the static analysis tool **PMD** on the source code. With the help of the precommit hook , we have ensured that a commit gets rejected if statement test coverage is less than 80% or if the custom rule in PMD analysis is violated or any security token or key is detected.
 
 ##Jenkins Configuration
 
@@ -35,6 +35,59 @@ We used **Istanbul** to measure the test coverage. The command and the screensho
 
 ####Improving Coverage
 
-We used constraint based test generation to generate test cases which increased the test coverage significantly.
+We used constraint based test generation to generate test cases which increased the test coverage significantly. The script <code>addconstraints.js</code> add the additional constraints to generate additional tests.
 The screenshot for the improved test coverage is as follows <br>
+
+We have also ensured that if the statement coverage is less than 80%, then the commit is rejected.
+
+        node parser.js
+        RETVAL=$?
+        if [ $RETVAL -ne 0 ]
+        then
+            echo ""
+            echo "Coverage or custom static analysis rule failed!"
+            echo "ABORTING commmit!"
+        exit 1
+        fi
+This is shown below in the screencast
+
+###Analysis section
+
+We have used the static analysis tool **PMD** to run static analysis on our code. For this analysis, we have used basic ruleset as well as defined our own custom rule <code>CheckRequireParams</code> which checks if the require function takes only one parameter.As a result of the analysis, an xml file <code>pmd.xml</code> is generated which mentions the violations in the code. The screenshot for the pmd.xml is as follows
+
+
+We have also ensured that if the analysis reports any violation of the custom rule in the code, then the commit is rejected.
+
+        ./check_keys.sh
+        RETVAL=$?
+        if [ $RETVAL -ne 0 ]
+        then
+            echo ""
+            echo "Private keys enclosed!"
+            echo "ABORTING commmit!"
+        exit 1
+    fi
+    
+This is shown below in the screencast
+
+We have configured Jenkin, with the plugins which displays the results of the static analysis through graphs. The screenshot of one such representation is as follows:
+
+###Check for security tokens or ssh keys
+Through the script <code>check_key.ssh</code> we are checking for the following conditions to assure that no security token or ssh keys are present in the files that are added to the commit. If any such key is detected, the commit is rejected
+    - Any PEM or PPK file is found
+        [ ${FILE##*.} = "pem" ] || [ ${FILE##*.} = "ppk" ]
+    - Any regular expression of characters matching the length between 20 and 40
+        '(?<![A-Z0-9])[A-Z0-9]{20,40}(?![A-Z0-9])'
+    - Any regular expression of characters matching the length between 40 and 80
+        '(?<![A-Za-z0-9+=])[A-Za-z0-9+=]{40,80}(?![A-Za-z0-9+=])'
+    - Any String containing the expression
+        "BEGIN RSA PRIVATE KEY"
+    - Any file with config tokens
+        "config.token"
+        
+The screencast for the same is as follows:
+
+
+
+
 
