@@ -103,9 +103,9 @@ Through the script <code>check_key.ssh</code> we are checking for the following 
 *   Any String containing the expression<br>
             <code>"BEGIN RSA PRIVATE KEY"</code><br>
 *   Any file with config tokens<br>
-            <code>"config.token"<code><br>  
+            <code>"config.token"</code>
 
-<br>The screenshot showing an example of a key violation is as follows :<br><br>
+The screenshot showing an example of a key violation is as follows :<br><br>
 ![Image](https://github.com/prashantgupta24/node-randomstring/blob/master/Screenshots%2Bcasts/KeyViolation.png)
 
 The screencast is as follows:
