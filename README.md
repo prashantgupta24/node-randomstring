@@ -6,7 +6,7 @@
     Prashant Gupta (pgupta7)
     
 ####Target Project
-We have used a simple **NodeJs** application for this stage of the project which acts as a library for creating random strings. We have configured **Jenkins** on our machine as our build server.
+We have used a simple **NodeJs** application for this stage of the project which acts as a library for creating random strings. The main source files are present in the <code>lib</code> folder and the test file is present in <code>test</code> folder.We have configured **Jenkins** on our machine as our build server.
 
 ####
 We are using **Mocha** as the testing framework and **Istanbul** to measure test coverage. We have used the technique of constraint based test generation to increase the coverage.
@@ -24,3 +24,17 @@ We are running the static analysis tool **PMD** on the source code. With the hel
     This add on plugin to PMD collects the analysis results and shows them on a combined trend graph
 - **Hudson post build Plugin**<br>
     This plugin helps us execute post-build tasks such as executing scripts once the build is done.
+
+###Test section
+####Unit Testing & Coverage
+
+We used **Mocha** framework for unit testing. The screenshot for the unit test results is attached below:
+
+We used **Istanbul** to measure the test coverage. The command and the screenshot is as follows <br>
+<code>node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha</code>
+
+####Improving Coverage
+
+We used constraint based test generation to generate test cases which increased the test coverage significantly.
+The screenshot for the improved test coverage is as follows <br>
+
